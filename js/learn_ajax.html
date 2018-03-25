@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<meta charset=utf-8>
+
+<script>
+    var xmlhttp;
+    
+    // 创建异步对象
+    function create(){
+        if(window.ActiveXObject){
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        else if(window.XMLHttpRequest){
+            xmlhttp=new XMLHttpRequest();
+        }
+        return xmlhttp;
+    }
+    xmlhttp=create();
+
+
+    function handle(){
+        if(xmlhttp.readyState==4&&xmlhttp.status==200){
+            alert(xmlhttp.responseText);
+        }
+    }
+    xmlhttp.onreadystatechange=handle();
+
+    function doxml(){
+        // 初始化异步对象
+        xmlhttp.open("GET","a.aspx",true);
+        xmlhttp.send();
+        alert("click");
+    }
+
+</script>
+
+<input type='button' value='test' onclick="doxml()"/>
